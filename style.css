@@ -1,0 +1,27 @@
+body{
+    background-color:  #E5E5E5;
+
+}
+
+.header{
+
+    border-top: 40px;
+    text-align: center;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    color:#75B79E;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+
+}
+.container{
+    background-color: yellow;
+    top: 150px;
+}
