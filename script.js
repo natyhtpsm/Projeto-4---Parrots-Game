@@ -1,48 +1,52 @@
 let boxes=[]; //where all the cards will be created
 let deck=[]; //All the cards that are being played at the moment 
 let images =['bobrossparrot','explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
-let endgame;
+let endgame; 
 let frstCard; //first card clicked
 let scndCard; //secound card clicked
 let numberCards=0; //total number of cards to activate the prompt
 let clicked; //clicked card
-let check; /
+let check; 
 let correct = 0;
 let stop;
 let allCards;
+let even = 0;
 
 
 //verifies if the number of cars is even
 while(numberCards<4 || numberCards>15 || even!==0){
-    numberCards=prompt("Quantas cartas você quer jogar?");
-    numberCards=parseInt(numberCards);
+    numberCards = prompt("Quantas cartas você quer jogar?");
+    numberCards = parseInt(numberCards);
     even=numberCards%2;
 }
 
+
 function shuffle(){
-    for(let i=0; i<numberCards/2; i++){
+    for(let i=0; i<(numberCards/2); i++){
         deck.push(images[i]);
         deck.push(images[i]);
     }
     deck.sort(comparador);
+    create();
 }
 
 function comparador(){
     return Math.random() -0.5;
 }
 
-
-for (let i=0; i<deck.length; i++){
-    boxes[i] = <li class="oneCard" data-test="card">
-                    <div data-test="face-up-image" class="front-face face">
-                        <img src="img/${deck[i]}.gif">
-                    </div> 
-                    <div class='back-face face'>
-                        <img data-test="face-down-image" src="img\back.png">
-                    </div>
-                </li>;
-    let addCards = document.querySelector(".container");
+for (let i=0; i<numberCards; i++){
+        boxes[i] = `<div class="oneCard" data-test="card">
+                        <div data-test="face-up-image" class="front-face face">
+                            <img src="img/${deck[i]}.gif">
+                        </div> 
+                        <div class='back-face face'>
+                            <img data-test="face-down-image" src="img\back.png">
+                        </div>
+                    </div>`;
+    addCards=document.querySelector(".container")
     addCards.innerHTML += boxes[i];
+
+
 }
 
 allCards = document.querySelector(".oneCard");
@@ -58,7 +62,8 @@ function turn(){
     }
     scndCard=this;
     compare();
-}
+} 
+
 
 function compare(){
     if(check == false){
@@ -73,7 +78,7 @@ function compare(){
     endGame();
     endgame+=1;
 
-}
+} 
 
 function noMatch(){
     check=true;
@@ -83,12 +88,9 @@ function noMatch(){
         check = false;
         clear();
     }, 1000);
-}
+} 
 
-function clear(){
-    frstCard=null;
-    scndCard=null;
-}
+
 
 function endGame(){
     if(correct==parseInt(numberCards)/2){
@@ -96,4 +98,3 @@ function endGame(){
 
     }
 }
-
