@@ -1,3 +1,4 @@
+let boxes[];
 let deck=[];
 let images =['bobrossparrot','explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
 let endgame;
@@ -5,6 +6,12 @@ let okay = 0;
 let frstCard;
 let scndCard;
 let numberCards;
+let clicked = 0;
+let check = 0;
+let correct = 0;
+let stop;
+let allCards;
+
 
 
 //verifies if the number of cars is even
@@ -16,8 +23,8 @@ while(numberCards<4 || numberCards>15 || even!==0){
 
 function shuffle(){
     for(let i=0; i<numberCards/2; i++){
-        deck.push(img[i]);
-        deck.push(img[i]);
+        deck.push(images[i]);
+        deck.push(images[i]);
     }
     deck.sort(comparador);
 }
@@ -26,21 +33,21 @@ function comparador(){
     return Math.random() -0.5;
 }
 
-function create(){
-    const container = document.querySelector('.container');
-    for (let i=0; i<deck.length; i++){
-        container.innerHTML = container.innerHTML + 
-        <li class="carta" onclick='turn(this)'>
-            <div class='front-face face'>
-                <img src='Projeto-4---Parrots-Game/img/back.png'>
-            </div> 
-            <div class='back-face face'>
-                <img src='Projeto-4---Parrots-Game/img/${deck[i]}.gif'>
-            </div>
-        </li>
-    }
+
+for (let i=0; i<deck.length; i++){
+    boxes[i] = <li class="oneCard">
+                    <div class="front-face face">
+                        <img src="img/${deck[i]}.gif">
+                    </div> 
+                    <div class='back-face face'>
+                        <img src="img\back.png">
+                    </div>
+                </li>;
+    let addCards = document.querySelector(".cards");
+    addCards.innerHTML += boxes[i];
 }
 
+let allCards = document.querySelector(".oneCard");
 function turn(){
     if(blockcards){
         return false;
