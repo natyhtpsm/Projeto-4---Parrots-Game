@@ -11,6 +11,7 @@ let correct = 0;
 let stop;
 let allCards;
 let even = 0;
+let plays = 0;
 
 
 //verifies if the number of cars is even
@@ -33,7 +34,7 @@ deck.sort(comparador);
 
 for (let i=0; i<numberCards; i++){
         boxes[i] = `<div class="oneCard" data-test="card">
-                        <div data-test="face-up-image" class="face turning">
+                        <div data-test="face-up-image" class="face turning" onclick='turn(this)'>
                             <img src="img/${deck[i]}.gif">
                         </div> 
                         <div class='face'>
@@ -60,15 +61,32 @@ function turn(oneCard){
         if(scndCard===undefined){
             scndCard=oneCard;
             scndCard.classList.add('turning');
+            plays++;
+
+            if(frstCard.innerHTML===scndCard.innerHTML){
+                correct+=2;
+                reset();
+                endGame();
+            } else{
+                setTimeout(turnBack, 1000);
+            }
         }
     }
-    compare();
 } 
+function reset(){
+    frstCard=undefined;
+    scndCard=undefined;
+}
+function turnBack(){
+    frstCard.classList.remove('turning');
+    scndCard.classList.remove('turning');
+    reset();
+}
 
 allCards.forEach((container) => container.addEventListener('click', turn));
 
 
-function compare(){
+/* function compare(){
 
     if(check == false){
         noMatch();
@@ -93,7 +111,7 @@ function noMatch(){
         clear();
     }, 1000);
 } 
-
+ */
 
 
 function endGame(){
