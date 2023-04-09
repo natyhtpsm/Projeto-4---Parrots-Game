@@ -20,52 +20,56 @@ while(numberCards<4 || numberCards>15 || even!==0){
     even=numberCards%2;
 }
 
-
-function shuffle(){
-    for(let i=0; i<(numberCards/2); i++){
-        deck.push(images[i]);
-        deck.push(images[i]);
-    }
-    deck.sort(comparador);
-    create();
+for(let i=0; i<(numberCards/2); i++){
+    deck.push(images[i]);
+    deck.push(images[i]);
 }
+
 
 function comparador(){
     return Math.random() -0.5;
 }
+deck.sort(comparador);
 
 for (let i=0; i<numberCards; i++){
         boxes[i] = `<div class="oneCard" data-test="card">
-                        <div data-test="face-up-image" class="front-face face">
+                        <div data-test="face-up-image" class="face turning">
                             <img src="img/${deck[i]}.gif">
                         </div> 
-                        <div class='back-face face'>
+                        <div class='face'>
                             <img data-test="face-down-image" src="img\back.png">
                         </div>
                     </div>`;
     addCards=document.querySelector(".container")
     addCards.innerHTML += boxes[i];
 
-
 }
 
 allCards = document.querySelector(".oneCard");
-function turn(){
-    if(stop){
-        return false;
+function turn(oneCard){
+    if(container.classList.contains('turning')){
+        return;
     }
-    this.classList.add("back-face");
-    if(!frstCard){
-        frstCard = this;
-        frstCard.classList.add("back-face");
-        return false;
+    if(!frstCard!==undefined && scndCard!==undefined){
+        return;
     }
-    scndCard=this;
+    if(frstCard === undefined){
+        frstCard=oneCard;
+        frstCard.classList.add('turning');
+    }else{
+        if(scndCard===undefined){
+            scndCard=oneCard;
+            scndCard.classList.add('turning');
+        }
+    }
     compare();
 } 
 
+allCards.forEach((container) => container.addEventListener('click', turn));
+
 
 function compare(){
+
     if(check == false){
         noMatch();
     } else{
