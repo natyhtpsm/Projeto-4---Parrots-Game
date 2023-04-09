@@ -2,11 +2,11 @@ let boxes=[]; //where all the cards will be created
 let deck=[]; //All the cards that are being played at the moment 
 let images =['bobrossparrot','explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
 let endgame;
-let frstCard;
-let scndCard;
-let numberCards=0;
-let clicked;
-let check;
+let frstCard; //first card clicked
+let scndCard; //secound card clicked
+let numberCards=0; //total number of cards to activate the prompt
+let clicked; //clicked card
+let check; /
 let correct = 0;
 let stop;
 let allCards;
@@ -33,12 +33,12 @@ function comparador(){
 
 
 for (let i=0; i<deck.length; i++){
-    boxes[i] = <li class="oneCard">
-                    <div class="front-face face">
+    boxes[i] = <li class="oneCard" data-test="card">
+                    <div data-test="face-up-image" class="front-face face">
                         <img src="img/${deck[i]}.gif">
                     </div> 
                     <div class='back-face face'>
-                        <img src="img\back.png">
+                        <img data-test="face-down-image" src="img\back.png">
                     </div>
                 </li>;
     let addCards = document.querySelector(".container");
@@ -61,7 +61,6 @@ function turn(){
 }
 
 function compare(){
-    check = frstCard.dataset.cartabla === scndCard.dataset.cartabla;
     if(check == false){
         noMatch();
     } else{
