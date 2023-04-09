@@ -73,8 +73,8 @@ image{
     width: 117px;
     border-radius: 5px;
     display: flex;
-    align-items: center
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
     position: relative;
     transition: all 0.5s;
     transform-style: preserve-3d;
