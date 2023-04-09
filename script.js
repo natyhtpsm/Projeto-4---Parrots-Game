@@ -1,17 +1,15 @@
-let boxes=[];
-let deck=[];
+let boxes=[]; //where all the cards will be created
+let deck=[]; //All the cards that are being played at the moment 
 let images =['bobrossparrot','explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
 let endgame;
-let okay = 0;
 let frstCard;
 let scndCard;
-let numberCards;
-let clicked = 0;
-let check = 0;
+let numberCards=0;
+let clicked;
+let check;
 let correct = 0;
 let stop;
 let allCards;
-
 
 
 //verifies if the number of cars is even
