@@ -47,9 +47,9 @@ for (let i=0; i<deck.length; i++){
     addCards.innerHTML += boxes[i];
 }
 
-let allCards = document.querySelector(".oneCard");
+allCards = document.querySelector(".oneCard");
 function turn(){
-    if(blockcards){
+    if(stop){
         return false;
     }
     this.classList.add("back-face");
@@ -62,16 +62,15 @@ function turn(){
     compare();
 }
 
-
 function compare(){
-    let check = frstCard.dataset.cartabla === scndCard.dataset.cartabla;
+    check = frstCard.dataset.cartabla === scndCard.dataset.cartabla;
     if(check == false){
         noMatch();
     } else{
-        frstCard.removeEventListener('click', turn);
-        scndCard.removeEventListener('click', turn);
+        frstCard.removeEventListener("click", turn);
+        scndCard.removeEventListener("click", turn);
         clear();
-        okay+=1;
+        correct+=1;
 
     }
     endGame();
@@ -80,11 +79,11 @@ function compare(){
 }
 
 function noMatch(){
-    block=true;
+    check=true;
     setTimeout(() =>{
         frstCard.classList.remove("back-face");
         scndCard.classList.remove("back-face");
-        block = false;
+        check = false;
         clear();
     }, 1000);
 }
@@ -95,7 +94,7 @@ function clear(){
 }
 
 function endGame(){
-    if(okay==parseInt(numberCards)/2){
+    if(correct==parseInt(numberCards)/2){
         alert("Você ganhou em "+endgame+"jogadas!")
 
     }
