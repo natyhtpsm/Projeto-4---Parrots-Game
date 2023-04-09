@@ -34,12 +34,16 @@ header{
     flex-wrap: wrap;
 }
 
-.card {
-    width: 200px;
-    height: 250px;
-    position: relative;
+.container {
+    width: 85vh;
+    height: 85vw;
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+
 }
-img{
+
+image{
     width: 150px;
     height: 150px;
     border-radius: 5px;
@@ -62,4 +66,16 @@ img{
 
 .back-face {
     transform: rotateY(180deg);
+}
+
+.oneCard{
+    height: 146px;
+    width: 117px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center
+    justify-content:center;
+    position: relative;
+    transition: all 0.5s;
+    transform-style: preserve-3d;
 }

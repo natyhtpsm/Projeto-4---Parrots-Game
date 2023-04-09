@@ -1,4 +1,4 @@
-let boxes[];
+let boxes=[];
 let deck=[];
 let images =['bobrossparrot','explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
 let endgame;
@@ -43,7 +43,7 @@ for (let i=0; i<deck.length; i++){
                         <img src="img\back.png">
                     </div>
                 </li>;
-    let addCards = document.querySelector(".cards");
+    let addCards = document.querySelector(".container");
     addCards.innerHTML += boxes[i];
 }
 
