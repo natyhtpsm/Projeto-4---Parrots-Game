@@ -73,6 +73,7 @@ function turn(oneCard) {
     }
 }
 
+
 //clean the variables so it can be verified again
 function reset(){
     frstCard=undefined;
@@ -85,7 +86,6 @@ function turnBack(){
     scndCard.classList.remove('turning');
     reset();
 }
-
 //finishes the game
 function endGame(){
     if(correct==deck.length){
