@@ -53,25 +53,24 @@ function turn(oneCard){
     if(frstCard!==undefined && scndCard!==undefined){
         return;
     }
+    oneCard.classList.add("turning");
+    plays++
     if(frstCard === undefined){
         frstCard=oneCard;
-        frstCard.classList.add('turning');
     }else{
         if(scndCard===undefined){
             scndCard=oneCard;
-            scndCard.classList.add('turning');
-            plays++;
 
             if(frstCard.innerHTML===scndCard.innerHTML){
                 reset();
                 correct+=2;
-            
+                endGame();
             } else{
                 setTimeout(turnBack, 1000);
             }
         }
     }
-    endGame();
+   
 } 
 
 
@@ -87,7 +86,7 @@ function turnBack(){
 
 
 function endGame(){
-    if(correct==parseInt(numberCards)/2){
+    if(correct==deck.length){
         alert("Você ganhou em "+plays+" jogadas!")
 
     }
