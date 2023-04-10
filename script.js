@@ -21,24 +21,26 @@ while(numberCards<4 || numberCards>15 || even!==0){
     even=numberCards%2;
 }
 
+//put the pictures inside the deck
 for(let i=0; i<(numberCards/2); i++){
     deck.push(images[i]);
     deck.push(images[i]);
 }
 
-
+//function to shuffle the cards
 function comparador(){
     return Math.random() -0.5;
 }
 deck.sort(comparador);
 
+//creates div that have the cards inside it
 for (let i=0; i<numberCards; i++){
         boxes[i] = `<div class="oneCard" data-test="card" onclick='turn(this)'>
                         <div class="back-face face" data-test="face-up-image">
                             <img src="img/${deck[i]}.gif">
                         </div> 
                         <div class='front-face face'>
-                            <img data-test="face-down-image" src="img\back.png">
+                            <img data-test="face-down-image" src="img/back.png">
                         </div>
                     </div>`;
     addCards=document.querySelector(".container")
@@ -46,6 +48,7 @@ for (let i=0; i<numberCards; i++){
 
 }
 
+//turns the cards
 function turn(oneCard){
     if(oneCard.classList.contains('turning')){
         return;
@@ -73,18 +76,20 @@ function turn(oneCard){
    
 } 
 
-
+//clean the variables so it can be verified again
 function reset(){
     frstCard=undefined;
     scndCard=undefined;
 }
+
+//turns back the cards that are not equal
 function turnBack(){
     frstCard.classList.remove('turning');
     scndCard.classList.remove('turning');
     reset();
 }
 
-
+//finishes the game
 function endGame(){
     if(correct==deck.length){
         alert("Você ganhou em "+plays+" jogadas!")
