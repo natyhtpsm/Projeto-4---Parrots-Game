@@ -11,8 +11,7 @@ let correct = 0;
 let allCards;
 let even = 0;
 let plays = 0;
-
-
+let tempCard;
 //verifies if the number of cars is even
 while(numberCards<4 || numberCards>15 || even!==0){
     numberCards = prompt("Quantas cartas você quer jogar?");
@@ -48,32 +47,29 @@ for (let i=0; i<numberCards; i++){
 }
 
 //turns the cards
-function turn(oneCard){
-    if(oneCard.classList.contains('turning')){
-        return;
-    }
-    if(frstCard!==undefined && scndCard!==undefined){
-        return;
-    }
-    oneCard.classList.add("turning");
-    plays++
-    if(frstCard === undefined){
-        frstCard=oneCard;
-    }else{
-        if(scndCard===undefined){
-            scndCard=oneCard;
 
-            if(frstCard.innerHTML===scndCard.innerHTML){
-                reset();
-                correct+=2;
-                endGame();
-            } else{
-                setTimeout(turnBack, 1000);
-            }
-        }
+function turn(oneCard) {
+    if (oneCard.classList.contains('turning')) {
+    return;
     }
-   
-} 
+    
+    if (frstCard === undefined) {
+    frstCard = oneCard;
+    oneCard.classList.add('turning');
+    } else if (scndCard === undefined) {
+    scndCard = oneCard;
+    oneCard.classList.add('turning');
+    if (frstCard.innerHTML === scndCard.innerHTML) {
+        reset();
+        correct += 2;
+        endGame();
+      } else {
+        setTimeout(turnBack, 1000);
+      }
+    }
+
+    plays++;
+}
 
 //clean the variables so it can be verified again
 function reset(){
