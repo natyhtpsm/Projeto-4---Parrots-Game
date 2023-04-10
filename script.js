@@ -1,6 +1,6 @@
 let boxes=[]; //where all the cards will be created
 let deck=[]; //All the cards that are being played at the moment 
-let images =['bobrossparrot','explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
+let images =['unicornparrot','revertitparrot', 'tripletsparrot','bobrossparrot','explodyparrot', 'fiestaparrot', 'metalparrot'];
 let endgame; 
 let frstCard=undefined; //first card clicked
 let scndCard=undefined; //secound card clicked
