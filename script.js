@@ -8,7 +8,6 @@ let numberCards=0; //total number of cards to activate the prompt
 let clicked; //clicked card
 let check; 
 let correct = 0;
-let stop;
 let allCards;
 let even = 0;
 let plays = 0;
@@ -21,7 +20,7 @@ while(numberCards<4 || numberCards>15 || even!==0){
     even=numberCards%2;
 }
 
-//put the pictures inside the deck
+//puts the pictures inside the deck
 for(let i=0; i<(numberCards/2); i++){
     deck.push(images[i]);
     deck.push(images[i]);

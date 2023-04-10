@@ -85,6 +85,7 @@ img{
     transition: all 0.5s;
     transform-style: preserve-3d;
     border: 1px solid #99CEA8;
+    margin: 10px;
 }
 
 
