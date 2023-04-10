@@ -2,8 +2,8 @@ let boxes=[]; //where all the cards will be created
 let deck=[]; //All the cards that are being played at the moment 
 let images =['bobrossparrot','explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
 let endgame; 
-let frstCard; //first card clicked
-let scndCard; //secound card clicked
+let frstCard=undefined; //first card clicked
+let scndCard=undefined; //secound card clicked
 let numberCards=0; //total number of cards to activate the prompt
 let clicked; //clicked card
 let check; 
@@ -33,11 +33,11 @@ function comparador(){
 deck.sort(comparador);
 
 for (let i=0; i<numberCards; i++){
-        boxes[i] = `<div class="oneCard" data-test="card">
-                        <div data-test="face-up-image" class="face turning" onclick='turn(this)'>
+        boxes[i] = `<div class="oneCard" data-test="card" onclick='turn(this)'>
+                        <div class="back-face face" data-test="face-up-image">
                             <img src="img/${deck[i]}.gif">
                         </div> 
-                        <div class='face'>
+                        <div class='front-face face'>
                             <img data-test="face-down-image" src="img\back.png">
                         </div>
                     </div>`;
@@ -46,12 +46,11 @@ for (let i=0; i<numberCards; i++){
 
 }
 
-allCards = document.querySelector(".oneCard");
 function turn(oneCard){
-    if(container.classList.contains('turning')){
+    if(oneCard.classList.contains('turning')){
         return;
     }
-    if(!frstCard!==undefined && scndCard!==undefined){
+    if(frstCard!==undefined && scndCard!==undefined){
         return;
     }
     if(frstCard === undefined){
@@ -64,15 +63,18 @@ function turn(oneCard){
             plays++;
 
             if(frstCard.innerHTML===scndCard.innerHTML){
-                correct+=2;
                 reset();
-                endGame();
+                correct+=2;
+            
             } else{
                 setTimeout(turnBack, 1000);
             }
         }
     }
+    endGame();
 } 
+
+
 function reset(){
     frstCard=undefined;
     scndCard=undefined;
@@ -83,40 +85,10 @@ function turnBack(){
     reset();
 }
 
-allCards.forEach((container) => container.addEventListener('click', turn));
-
-
-/* function compare(){
-
-    if(check == false){
-        noMatch();
-    } else{
-        frstCard.removeEventListener("click", turn);
-        scndCard.removeEventListener("click", turn);
-        clear();
-        correct+=1;
-
-    }
-    endGame();
-    endgame+=1;
-
-} 
-
-function noMatch(){
-    check=true;
-    setTimeout(() =>{
-        frstCard.classList.remove("back-face");
-        scndCard.classList.remove("back-face");
-        check = false;
-        clear();
-    }, 1000);
-} 
- */
-
 
 function endGame(){
     if(correct==parseInt(numberCards)/2){
-        alert("Você ganhou em "+endgame+"jogadas!")
+        alert("Você ganhou em "+plays+" jogadas!")
 
     }
 }
