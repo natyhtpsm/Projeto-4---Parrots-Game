@@ -36,8 +36,8 @@ deck.sort(comparador);
 //creates div that have the cards inside it
 for (let i=0; i<numberCards; i++){
         boxes[i] = `<div class="oneCard" data-test="card" onclick='turn(this)'>
-                        <div class="back-face face" data-test="face-up-image">
-                            <img src="img/${deck[i]}.gif">
+                        <div class="back-face face">
+                            <img data-test="face-up-image" src="img/${deck[i]}.gif">
                         </div> 
                         <div class='front-face face'>
                             <img data-test="face-down-image" src="img/back.png">
