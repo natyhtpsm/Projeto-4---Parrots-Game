@@ -47,28 +47,30 @@ for (let i=0; i<numberCards; i++){
 }
 
 //turns the cards
-
 function turn(oneCard) {
     if (oneCard.classList.contains('turning')) {
-    return;
+      return;
     }
-    
+  
     if (frstCard === undefined) {
-    frstCard = oneCard;
-    oneCard.classList.add('turning');
+      frstCard = oneCard;
+      oneCard.classList.add('turning');
     } else if (scndCard === undefined) {
-    scndCard = oneCard;
-    oneCard.classList.add('turning');
-    if (frstCard.innerHTML === scndCard.innerHTML) {
+      scndCard = oneCard;
+      oneCard.classList.add('turning');
+  
+      plays++; // Incrementa a variável "plays" aqui
+      
+      if (frstCard.innerHTML === scndCard.innerHTML) {
         reset();
         correct += 2;
         endGame();
       } else {
         setTimeout(turnBack, 1000);
       }
+    } else {
+      return;
     }
-
-    plays++;
 }
 
 //clean the variables so it can be verified again
